@@ -1,6 +1,5 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { request } from "http";
 import { Observable, tap } from "rxjs";
 import { LoginService } from "./login.service";
 
@@ -16,12 +15,15 @@ export class AuthInterceptor implements HttpInterceptor{
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log("inside")
 
-        const token =localStorage.getItem('token');
-        console.log(token)
-        return next.handle(req.clone({
-            setHeaders:{'Access-Control-Allow-Origin':'*',
-            'Authorization':`Bearer ${token}`,}
-        }),);
+        let authReq=req;
+        const token = this.Login.getToken();
+        if(token!=null){
+            authReq=authReq.clone({
+                setHeaders:{'Authorization':`Bearer ${token}`},
+            });
+        }
+        console.log(authReq.headers)
+        return next.handle(authReq);
 
 
     }

@@ -13,6 +13,7 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   public generateToken(LoginData:any){
+    localStorage.clear();
     
     let token=this.http.post(`${baseUrl}/token-generation`,LoginData);
     console.log("*****generateToken*****"+token);
