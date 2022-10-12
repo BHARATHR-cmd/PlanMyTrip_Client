@@ -42,7 +42,7 @@ export class LoginService {
     }
   }
   public Logout(){
-    localStorage.removeItem("token");
+    localStorage.clear();
     return true;
   }
 

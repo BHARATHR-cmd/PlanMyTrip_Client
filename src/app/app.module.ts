@@ -18,6 +18,8 @@ import { HomeComponent } from './Components/home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { authInterceptorProviders } from './services/auth.interceptor';
+import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
+import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { authInterceptorProviders } from './services/auth.interceptor';
     FooterComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AdminDashboardComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,
