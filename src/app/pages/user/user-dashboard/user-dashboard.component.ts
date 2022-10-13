@@ -10,6 +10,10 @@ export class UserDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('reload')=='1'){
+        localStorage.removeItem("reload");
+        window.location.reload();
+    }
   }
 
 }

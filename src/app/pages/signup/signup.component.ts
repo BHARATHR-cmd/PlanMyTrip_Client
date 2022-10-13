@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 export class SignupComponent implements OnInit {
 
   constructor(private userService:UserServiceService,private snackbar:MatSnackBar) { }
+  imagesrc="src/assets/lo.png"
 public user={
   name:"",
   password:"",

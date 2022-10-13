@@ -4,11 +4,17 @@
     </a>
     <h5>Plan My Trip</h5>
     <span class="example-spacer"></span>
-    <a [routerLink]="'/login'" mat-button aria-label="Button that displays a tooltip when focused or hovered over">
+    <a *ngIf="!loggedIn" [routerLink]="'/login'" mat-button>
   Login
     </a>
-    <a [routerLink]="'/signup'" mat-button aria-label="Button that displays a tooltip when focused or hovered over">
-  Register
+    <a *ngIf="!loggedIn" [routerLink]="'/signup'" mat-button>
+  Register {{loggedIn}}
     </a>
+    <a *ngIf="loggedIn" mat-button>
+      {{login.getUser().username}}
+        </a>
+    <a (click)="logout()" *ngIf="loggedIn" [routerLink]="'/login'" mat-button>
+          logout
+            </a>
 
 </mat-toolbar>

@@ -5,3 +5,10 @@
 .button_spacing {
     margin-left: 20px;
 }
+
+.profile-image {
+    max-width: 200px;
+    max-height: 200px;
+    border: 2px solid red;
+    border-radius: 50%;
+}

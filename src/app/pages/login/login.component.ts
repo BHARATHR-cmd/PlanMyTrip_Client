@@ -26,11 +26,14 @@ export class LoginComponent implements OnInit {
         (user:any)=>{
           this.Login.setUserDetails(user);
           console.log(user);
+          localStorage.setItem('reload',"1");
           if(this.Login.getUserRole()=="ADMIN"){
-            this.router.navigate(['/admin-dashboard'])
+            this.router.navigate(['admin-dashboard'])
+
           }
           else if(this.Login.getUserRole()=="NORMAL"){
-            this.router.navigate(['/user-dashboard'])
+            this.router.navigate(['user-dashboard'])
+            
 
           }
             else{
@@ -48,6 +51,7 @@ export class LoginComponent implements OnInit {
       this.snack.open("Invalid Details !! Try Again","",{duration:3000} )
     }
     );
+    
     
   }
 

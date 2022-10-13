@@ -34,7 +34,8 @@ export class LoginService {
 
   public isLoggedIn(){
     let tokkenStr=localStorage.getItem("token");
-    if(tokkenStr==undefined||tokkenStr==""||tokkenStr==null){
+    console.log(tokkenStr+"&^&*^&^%&%")
+    if(tokkenStr==""||tokkenStr==null){
       return false
     }
     else{
@@ -42,7 +43,7 @@ export class LoginService {
     }
   }
   public Logout(){
-    localStorage.clear();
+    localStorage.removeItem('token');
     return true;
   }
 
@@ -60,13 +61,13 @@ export class LoginService {
       return JSON.parse(userStr)
     }
     else{
-      this.Logout();
+      // this.Logout();
       return false;
     }
   }
 
   public getUserRole(){
     let user=this.getUser();
-    return user.authorities[0].authority;
+    return user.role;
   }
 }
