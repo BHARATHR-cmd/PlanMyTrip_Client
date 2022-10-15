@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { defer, finalize, Observable, Subject } from 'rxjs';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -18,15 +19,19 @@ public user={
   phone:"",
 }
 
+loading = new Subject<boolean>()
   ngOnInit(): void {
   }
   formSubmit(){
-    this.userService.addUser(this.user).subscribe(
+    this.userService.addUser(this.user).pipe(
+      this.indicate(this.loading)
+    ).subscribe(
       (data:any)=>{
         console.log(data);
         Swal.fire('Success','User got registered as '+data.username,'success')
         
       },(error)=>{
+        // this.loading=false;
         console.log(error);
         this.snackbar.open('Email Id Already Exits', '', {
           duration: 3000
@@ -36,6 +41,18 @@ public user={
       );
     
    
+  }
+  prepare<T>(callback: () => void): (source: Observable<T>) => Observable<T> {
+    return (source: Observable<T>): Observable<T> => defer(() => {
+      callback();
+      return source;
+    });
+  }
+  indicate<T>(indicator: Subject<boolean>): (source: Observable<T>) => Observable<T> {
+    return (source: Observable<T>): Observable<T> => source.pipe(
+      this.prepare(() => indicator.next(true)),
+      finalize(() => indicator.next(false))
+    )
   }
 
 }

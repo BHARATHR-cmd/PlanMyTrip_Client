@@ -23,8 +23,15 @@ import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboa
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import{MatListModule} from '@angular/material/list';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component'
 import {MatTableModule} from '@angular/material/table';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ViewPackagesComponent } from './pages/admin/admin-dashboard/view-packages/view-packages.component';
+import { AddPackagesComponent } from './pages/admin/admin-dashboard/add-packages/add-packages.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +44,12 @@ import {MatTableModule} from '@angular/material/table';
     UserDashboardComponent,
     ProfileComponent,
     SidebarComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ViewCategoriesComponent,
+    AddCategoryComponent,
+    
+    ViewPackagesComponent,
+    AddPackagesComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +58,8 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule,MatTableModule,
-    HttpClientModule,MatListModule
+    FormsModule,MatTableModule,MatSelectModule,
+    HttpClientModule,MatListModule,MatProgressBarModule,MatTooltipModule
     ,MatSnackBarModule,MatCardModule,MatToolbarModule,MatIconModule
 
   ],

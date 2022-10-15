@@ -1,0 +1,32 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 pad" *ngFor="let c of Categories">
+                <mat-card class="example-card">
+                    <mat-card-header>
+
+                        <mat-card-title>{{c.ctitle}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="{{c.cimage}}" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                        <p>
+                            {{c.cdescription}} </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-icon-button matTooltip="Update" color="accent" aria-label="Example icon button with a heart icon">
+                        <mat-icon>update</mat-icon>
+                      </button>
+                        <button mat-icon-button color="warn" matTooltip="Delete" aria-label="Example icon button with a heart icon">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </mat-card-actions>
+
+                </mat-card>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

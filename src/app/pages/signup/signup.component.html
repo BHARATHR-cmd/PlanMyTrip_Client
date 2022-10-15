@@ -8,6 +8,7 @@
                         <!-- <img class="profile-image text-center" [src]="imagesrc" alt="Logo"> -->
 
                     </div>
+
                     <h1 class="text-center">Register Here!!!!</h1>
                     <!-- {{user|json}} -->
                     <form (ngSubmit)="formSubmit()">
@@ -34,7 +35,13 @@
 
                         </div>
                     </form>
+                    <div *ngIf="loading| async">
+                        <h6 class="">Please wait while we Setup your Account</h6>
+                    </div>
                 </mat-card>
+                <div *ngIf="loading| async">
+                    <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>
+                </div>
             </div>
         </div>
     </div>

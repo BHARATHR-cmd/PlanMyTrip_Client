@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { AddPackagesComponent } from './pages/admin/admin-dashboard/add-packages/add-packages.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
+import { ViewPackagesComponent } from './pages/admin/admin-dashboard/view-packages/view-packages.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -34,11 +38,23 @@ const routes: Routes = [
     children:[{
       path:'',
       component:WelcomeComponent,
-      // pathMatch:'full'
     },{
       path:'profile',
       component:ProfileComponent,
-      // pathMatch:'full'
+    },
+    {
+      path:'view-category',
+      component:ViewCategoriesComponent,
+      
+    },{
+      path:'add-category',
+      component:AddCategoryComponent,
+    },{
+      path:'add-package',
+      component:AddPackagesComponent,
+    },{
+      path:'view-package',
+      component:ViewPackagesComponent,
     }]
   },
   {
