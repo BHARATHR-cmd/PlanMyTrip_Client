@@ -17,7 +17,7 @@ export class AddPackagesComponent implements OnInit {
     
     }}
 
-  public category=[{ cid:1,
+  public category=[{ cid:'',
     cdescription:"", cimage:"", ctitle:""
   }];
 
@@ -35,7 +35,7 @@ export class AddPackagesComponent implements OnInit {
     if(this.package.ptilte!=""||this.package.pdescription!=""||this.package.pimage!=""){
      this.opPackage.addPackage(this.package).subscribe((data:any)=>{
       console.log(data);
-      Swal.fire('Success',"Category got Save as "+data.ptilte)
+      Swal.fire('Success',"Category got Save as "+data.ptilte,"success")
      });
     }
     else{

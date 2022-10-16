@@ -9,8 +9,17 @@ import { LoginService } from 'src/app/services/login.service';
 export class ProfileComponent implements OnInit {
 
   constructor(public login:LoginService) { }
+  show=true;
+  updateurl=''
   
   ngOnInit(): void {
+    if(this.login.getUserRole()=="ADMIN"){
+      this.show=true;
+      this.updateurl='/admin-dashboard/update-profile/'
+    }
+    else{
+      this.updateurl='/user-dashboard/update-profile/'
+    }
   }
 
 }

@@ -1,0 +1,37 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-lg-9  ">
+                <mat-card>
+
+                    <h1 class="text-center">Add Category</h1>
+                    <!-- {{category|json}} -->
+                    <form (ngSubmit)="categoryUpdateForm()">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Title</mat-label>
+                            <input [(ngModel)]="category.ctitle" name="ctitle" matInput placeholder="Enter here" required>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Description</mat-label>
+                            <input [(ngModel)]="category.cdescription" name="cdescription" type="text" matInput placeholder="Enter here" required>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Image Url</mat-label>
+                            <input [(ngModel)]="category.cimage" name="cimage" type="text" matInput placeholder="Enter here" required>
+                        </mat-form-field>
+
+                        <!-- <img src="url" alt="">
+
+                        <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".png,.jpg"> -->
+
+                        <div class="container" style="text-align: center;">
+                            <button mat-raised-button class="button_spacing" color="primary">Submit</button>
+
+
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -27,6 +27,11 @@ export class LoginService {
     return this.http.get(`${baseUrl}/current-user`);
     
   }
+
+  public updateUserProfile(user:any){
+    return this.http.put(`${baseUrl}/user/`,user);
+  }
+
   public loginUser(token: any){
     localStorage.setItem("token",token);
     return true;
@@ -65,6 +70,7 @@ export class LoginService {
       return false;
     }
   }
+
 
   public getUserRole(){
     let user=this.getUser();

@@ -33,6 +33,6 @@
 
     </mat-card-content>
     <mat-card-actions class="text-center">
-        <button mat-raised-button color="primary">UPDATE</button>
+        <button [routerLink]="updateurl+login.getUser().userid" mat-raised-button color="primary">UPDATE</button>
     </mat-card-actions>
 </mat-card>

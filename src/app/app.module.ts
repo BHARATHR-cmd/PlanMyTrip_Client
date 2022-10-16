@@ -26,12 +26,15 @@ import{MatListModule} from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component'
 import {MatTableModule} from '@angular/material/table';
-import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
-import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ViewCategoriesComponent } from './pages/admin/admin-dashboard/view-categories/view-categories.component';
+import { AddCategoryComponent } from './pages/admin/admin-dashboard/add-category/add-category.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ViewPackagesComponent } from './pages/admin/admin-dashboard/view-packages/view-packages.component';
 import { AddPackagesComponent } from './pages/admin/admin-dashboard/add-packages/add-packages.component';
+import { UpdatePackageComponent } from './pages/admin/admin-dashboard/update-package/update-package.component';
+import { UpdateCategoryComponent } from './pages/admin/admin-dashboard/update-category/update-category.component';
+import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +52,10 @@ import { AddPackagesComponent } from './pages/admin/admin-dashboard/add-packages
     AddCategoryComponent,
     
     ViewPackagesComponent,
-    AddPackagesComponent
+    AddPackagesComponent,
+    UpdatePackageComponent,
+    UpdateCategoryComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,

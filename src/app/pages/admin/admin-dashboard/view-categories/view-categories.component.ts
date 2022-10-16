@@ -13,8 +13,10 @@ export class ViewCategoriesComponent implements OnInit {
   constructor(private opCategory:CategoryService) { }
 
   Categories=[{
+    cid:'',
     cdescription:"", cimage:"", ctitle:""
   }];
+  
 
   ngOnInit(): void {
     this.opCategory.getCategories().subscribe((data:any)=>
@@ -25,6 +27,17 @@ export class ViewCategoriesComponent implements OnInit {
       Swal.fire("Error !!","Error in loading the data")
     })  }
 
+    delete(cid: any){
+      console.log(cid);
+      this.opCategory.deleteCategory(cid).subscribe((data:any)=>{
+        this.Categories=this.Categories.filter((category)=>category.cid!=cid)
+        Swal.fire("Success !!","Successfully Deleted Category ","success");
+    
+
+      },(error)=>{
+        console.log(error);
+        Swal.fire("Error !!","Not able to Delete","error")
+      }) }
 
   
 

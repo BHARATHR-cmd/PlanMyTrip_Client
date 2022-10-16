@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { defer, finalize, Observable, Subject } from 'rxjs';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import Swal from 'sweetalert2';
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private userService:UserServiceService,private snackbar:MatSnackBar) { }
+  constructor(private userService:UserServiceService,private snackbar:MatSnackBar,private router:Router) { }
   imagesrc="src/assets/lo.png"
 public user={
   name:"",
@@ -29,6 +30,7 @@ loading = new Subject<boolean>()
       (data:any)=>{
         console.log(data);
         Swal.fire('Success','User got registered as '+data.username,'success')
+        this.router.navigate(['login']);
         
       },(error)=>{
         // this.loading=false;

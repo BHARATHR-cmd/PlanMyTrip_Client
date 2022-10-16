@@ -9,6 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NavbarComponent implements OnInit {
   loggedIn=false;
+  url='/user-dashboard'
   
   // user=null;
   constructor(public login:LoginService,private router:Router) { }
@@ -16,6 +17,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(){
     this.loggedIn=this.login.isLoggedIn();
+    if(this.login.getUserRole()=='ADMIN'){
+      this.url='/admin-dashboard'
+    }
     
 
    

@@ -12,15 +12,14 @@
                         <p>
                             {{c.cdescription}} </p>
                     </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-icon-button matTooltip="Update" color="accent" aria-label="Example icon button with a heart icon">
+                    <mat-card-actions class="row justify-content-end">
+                        <button [routerLink]="'/admin-dashboard/update-category/'+c.cid" class="col-7" mat-icon-button matTooltip="Update" color="accent">
                         <mat-icon>update</mat-icon>
                       </button>
-                        <button mat-icon-button color="warn" matTooltip="Delete" aria-label="Example icon button with a heart icon">
+                        <button (click)="delete(c.cid)" class="col-4" mat-icon-button color="warn" matTooltip="Delete" aria-label="Example icon button with a heart icon">
                         <mat-icon>delete</mat-icon>
                       </button>
                     </mat-card-actions>
-
                 </mat-card>
 
             </div>

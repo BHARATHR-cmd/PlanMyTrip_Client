@@ -10,7 +10,7 @@
     <a *ngIf="!loggedIn" [routerLink]="'/signup'" mat-button>
   Register {{loggedIn}}
     </a>
-    <a *ngIf="loggedIn" routerLink="/admin-dashboard/profile" mat-button>
+    <a *ngIf="loggedIn" [routerLink]="url" mat-button>
       {{login.getUser().username}}
         </a>
     <a (click)="logout()" *ngIf="loggedIn" [routerLink]="'/login'" mat-button>

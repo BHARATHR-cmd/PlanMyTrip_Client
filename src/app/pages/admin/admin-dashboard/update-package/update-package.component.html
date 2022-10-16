@@ -1,0 +1,45 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-lg-9  ">
+                <mat-card>
+
+                    <h1 class="text-center">Add Package</h1>
+                    <!-- {{category|json}} -->
+                    <form (ngSubmit)="packageUpdateForm()">
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Title</mat-label>
+                            <input [(ngModel)]="package.ptilte" name="ptilte" matInput placeholder="Enter here" required>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Description</mat-label>
+                            <input [(ngModel)]="package.pdescription" name="pdescription" type="text" matInput placeholder="Enter here" required>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Image Url</mat-label>
+                            <input [(ngModel)]="package.pimage" name="pimage" type="text" matInput placeholder="Enter here" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Choose category</mat-label>
+                            <mat-select name="category" [(ngModel)]="package.category.cid">
+                                <!-- <mat-option>Clear</mat-option> -->
+                                <mat-option *ngFor="let c of category" [value]="c.cid">{{c.ctitle}}</mat-option>
+                            </mat-select>
+                            <mat-hint>Errors appear instantly!</mat-hint>
+                            <mat-error>You must make a selection</mat-error>
+
+                        </mat-form-field>
+
+                        <div class="container" style="text-align: center;">
+                            <button mat-raised-button class="button_spacing" color="primary">Submit</button>
+
+
+                        </div>
+                    </form>
+                    {{package|json}}
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
