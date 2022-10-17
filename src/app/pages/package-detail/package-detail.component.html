@@ -1,0 +1,35 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <mat-card>
+                    <img mat-card-lg-image class="detailsimagecard" src="{{packagee.pimage}}" alt=""></mat-card>
+            </div>
+            <div class="col-6">
+                <mat-card-content>
+                    <div class="row pad">
+                        <div class="col">
+                            <h3>Title: </h3>
+                            {{packagee.ptilte}}
+                        </div>
+
+                    </div>
+                    <div class="row pad">
+                        <div class="col">
+                            <h3>Description:</h3>
+                        </div><br>
+                        <div class="col-lg-9">{{packagee.pdescription}}</div>
+
+                    </div>
+
+
+                </mat-card-content>
+                <mat-card-actions>
+                    <button color="accent" mat-raised-button>Book</button>
+                </mat-card-actions>
+            </div>
+
+        </div>
+
+    </div>
+</div>

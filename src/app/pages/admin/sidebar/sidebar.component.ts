@@ -12,20 +12,22 @@ export class SidebarComponent implements OnInit {
   constructor(private login:LoginService,private router:Router) { }
 
   show=false;
-  home='/';
+  show_view=true;
+  show_view_category_url='view-category';
+  show_view_package_url='view-package/0';
+
+  home='/user-dashboard';
   profiile='profile'
 
   ngOnInit(): void {
     if(this.login.getUserRole()=="ADMIN"){
         this.show=true;
-        
+        this.home='/admin-dashboard'
         this.profiile='profile'
+        // this.show_viewurl='view-category'
 
     }
-    else{
-      
-      this.profiile='profile'
-    }
+    
   }
 
 
@@ -34,6 +36,14 @@ export class SidebarComponent implements OnInit {
     // alert("Are you sure you want to Logout!!")
     this.router.navigate(['login'])
 
+  }
+  homeclick(){
+    if(this.login.getUserRole()=="ADMIN"){
+      this.show=true;
+      this.home='/admin-dashboard'
+      this.profiile='profile'
+
+  }
   }
 
 }

@@ -35,6 +35,8 @@ import { AddPackagesComponent } from './pages/admin/admin-dashboard/add-packages
 import { UpdatePackageComponent } from './pages/admin/admin-dashboard/update-package/update-package.component';
 import { UpdateCategoryComponent } from './pages/admin/admin-dashboard/update-category/update-category.component';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
+import { PackageDetailComponent } from './pages/package-detail/package-detail.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,9 @@ import { UpdateProfileComponent } from './pages/update-profile/update-profile.co
     AddPackagesComponent,
     UpdatePackageComponent,
     UpdateCategoryComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    PackageDetailComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,7 @@ import { UpdateProfileComponent } from './pages/update-profile/update-profile.co
     MatFormFieldModule,
     FormsModule,MatTableModule,MatSelectModule,
     HttpClientModule,MatListModule,MatProgressBarModule,MatTooltipModule
-    ,MatSnackBarModule,MatCardModule,MatToolbarModule,MatIconModule
+    ,MatSnackBarModule,MatCardModule,MatToolbarModule,MatIconModule,
 
   ],
   providers: [authInterceptorProviders ],

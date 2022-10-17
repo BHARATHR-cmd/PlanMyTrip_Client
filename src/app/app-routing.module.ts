@@ -16,6 +16,7 @@ import { NormalGuard } from './services/normal.guard';
 import { UpdatePackageComponent } from './pages/admin/admin-dashboard/update-package/update-package.component';
 import { UpdateCategoryComponent } from './pages/admin/admin-dashboard/update-category/update-category.component';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
+import { PackageDetailComponent } from './pages/package-detail/package-detail.component';
 
 const routes: Routes = [
   {
@@ -68,7 +69,10 @@ const routes: Routes = [
     },{
       path:'update-category/:cid',
       component:UpdateCategoryComponent,
-    }]
+    },{
+      path:'view-package/:cid',
+      component:ViewPackagesComponent,
+    },]
   },
    // ********************** Normal user Routes **********************
   {
@@ -79,15 +83,25 @@ const routes: Routes = [
       path:'',
       component:WelcomeComponent,
     },{
-      path:'',
-      component:WelcomeComponent,
-    },{
       path:'profile',
       component:ProfileComponent,
     },{
       path:'update-profile/:uid',
       component:UpdateProfileComponent,
-    }]
+    },{
+      path:'view-category',
+      component:ViewCategoriesComponent,
+      
+    },{
+      path:'view-package',
+      component:ViewPackagesComponent,
+    },{
+      path:'view-package/:cid',
+      component:ViewPackagesComponent,
+    },{
+      path:'package-details/:pid',
+      component:PackageDetailComponent,
+    },]
 
   },
 ];

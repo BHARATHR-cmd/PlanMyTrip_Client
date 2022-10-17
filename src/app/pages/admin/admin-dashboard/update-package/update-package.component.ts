@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class UpdatePackageComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private opPackage:PackageService,private opCategory:CategoryService) { }
-  pid=1;
+  pid=1; 
 
   package={
     pid:"",

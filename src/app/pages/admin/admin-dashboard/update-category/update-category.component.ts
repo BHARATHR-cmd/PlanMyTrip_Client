@@ -21,7 +21,7 @@ export class UpdateCategoryComponent implements OnInit {
       this.category=data;
     })
 
-  }
+  } 
 
   categoryUpdateForm(){
     this.opCategory.updateCategory(this.category).subscribe((data:any)=>{

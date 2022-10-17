@@ -1,43 +1,96 @@
-/* You can add global styles to this file, and also import other style files */
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.full-width {
-    width: 100%;
-}
-
-.button_spacing {
-    padding: 10px 10px 10px 10px;
-}
-
-.profile-image {
-    max-width: 200px;
-    max-height: 200px;
-    border: 2px solid red;
-    border-radius: 50%;
-}
-
-.example-card {
-    max-width: 400px;
-}
-
-.example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-}
-
-.pad {
-    padding: 20px 20px 20px 20px;
-}
+    /* You can add global styles to this file, and also import other style files */
+    
+    html,
+    body {
+        height: 100%;
+    }
+    
+    body {
+        margin: 0;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+    
+    .full-width {
+        width: 100%;
+    }
+    
+    .button_spacing {
+        padding: 10px 10px 10px 10px;
+    }
+    
+    .profile-image {
+        max-width: 200px;
+        max-height: 200px;
+        border: 2px solid red;
+        border-radius: 50%;
+    }
+    
+    .example-card {
+        max-width: 400px;
+    }
+    
+    .example-header-image {
+        background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+        background-size: cover;
+    }
+    
+    .pad {
+        padding: 20px 20px 20px 20px;
+    }
+    
+    section {
+        display: table;
+    }
+    
+    .example-label {
+        display: table-cell;
+        font-size: 14px;
+        margin-left: 8px;
+        min-width: 120px;
+    }
+    
+    .example-button-row {
+        display: table-cell;
+        width: 490px;
+    }
+    
+    .example-button-row .mat-button-base {
+        margin: 8px 8px 8px 0;
+    }
+    
+    .example-flex-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .example-button-container {
+        display: flex;
+        justify-content: center;
+        width: 120px;
+    }
+    /* .incard {
+        max-width: 300px;
+        max-width: 300px;
+        min-width: 300px;
+        min-height: 300px;
+    }
+     */
+    
+    .card_image {
+        max-width: 300px;
+        max-height: 190px;
+        /* min-width: 300px; */
+        /* min-height: 300px; */
+    }
+    
+    .detailsimagecard {
+        max-width: 260px;
+        max-height: 260px;
+        min-width: 260px;
+        min-height: 260px;
+    }

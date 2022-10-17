@@ -2,11 +2,11 @@
     <mat-action-list>
         <div mat-subheader>
             <mat-icon mat-list-icon>menu</mat-icon>Menu</div>
-        <button mat-list-item [routerLink]="home"><mat-icon mat-list-icon>home</mat-icon>Home</button>
+        <button mat-list-item (click)="homeclick()" [routerLink]="home"><mat-icon mat-list-icon>home</mat-icon>Home</button>
         <button mat-list-item [routerLink]="profiile"><mat-icon mat-list-icon>account_circle</mat-icon>Profile</button>
-        <button *ngIf="show" mat-list-item routerLink="/admin-dashboard/view-category"><mat-icon mat-list-icon>category</mat-icon>Categories</button>
+        <button *ngIf="show_view" mat-list-item [routerLink]="show_view_category_url"><mat-icon mat-list-icon>category</mat-icon>Categories</button>
         <button *ngIf="show" mat-list-item routerLink="/admin-dashboard/add-category"><mat-icon mat-list-icon>playlist_add</mat-icon>Add Categories</button>
-        <button *ngIf="show" mat-list-item routerLink="/admin-dashboard/view-package"><mat-icon mat-list-icon>home_work</mat-icon>Packages</button>
+        <button *ngIf="show_view" mat-list-item [routerLink]="show_view_package_url"><mat-icon mat-list-icon>home_work</mat-icon>Packages</button>
         <button *ngIf="show" mat-list-item routerLink="/admin-dashboard/add-package"><mat-icon mat-list-icon>add_home_work</mat-icon>Add Packages</button>
         <button mat-list-item (click)="logout()"><mat-icon mat-list-icon>logout</mat-icon>Logout</button>
 
