@@ -17,6 +17,8 @@ import { UpdatePackageComponent } from './pages/admin/admin-dashboard/update-pac
 import { UpdateCategoryComponent } from './pages/admin/admin-dashboard/update-category/update-category.component';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 import { PackageDetailComponent } from './pages/package-detail/package-detail.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { BookedPackagesComponent } from './pages/booked-packages/booked-packages.component';
 
 const routes: Routes = [
   {
@@ -64,6 +66,9 @@ const routes: Routes = [
       path:'view-package',
       component:ViewPackagesComponent,
     },{
+      path:'booked-packages',
+      component:BookedPackagesComponent,
+    },{
       path:'update-package/:pid',
       component:UpdatePackageComponent,
     },{
@@ -72,6 +77,12 @@ const routes: Routes = [
     },{
       path:'view-package/:cid',
       component:ViewPackagesComponent,
+    },{
+      path:'package-order/:pid',
+      component:CheckoutComponent,
+    },{
+      path:'package-details/:pid',
+      component:PackageDetailComponent,
     },]
   },
    // ********************** Normal user Routes **********************
@@ -101,6 +112,12 @@ const routes: Routes = [
     },{
       path:'package-details/:pid',
       component:PackageDetailComponent,
+    },{
+      path:'package-order/:pid',
+      component:CheckoutComponent,
+    },{
+      path:'booked-packages',
+      component:BookedPackagesComponent,
     },]
 
   },

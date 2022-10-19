@@ -23,9 +23,11 @@ import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboa
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import{MatListModule} from '@angular/material/list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component'
 import {MatTableModule} from '@angular/material/table';
+import { MatNativeDateModule } from '@angular/material/core';
 import { ViewCategoriesComponent } from './pages/admin/admin-dashboard/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/admin-dashboard/add-category/add-category.component';
 import {MatSelectModule} from '@angular/material/select';
@@ -37,6 +39,10 @@ import { UpdateCategoryComponent } from './pages/admin/admin-dashboard/update-ca
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 import { PackageDetailComponent } from './pages/package-detail/package-detail.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { DatePipe } from '@angular/common';
+import { BookedPackagesComponent } from './pages/booked-packages/booked-packages.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +65,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     UpdateCategoryComponent,
     UpdateProfileComponent,
     PackageDetailComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    BookedPackagesComponent
   ],
   imports: [
     BrowserModule,
@@ -69,11 +76,11 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,MatTableModule,MatSelectModule,
-    HttpClientModule,MatListModule,MatProgressBarModule,MatTooltipModule
+    HttpClientModule,MatListModule,MatProgressBarModule,MatTooltipModule,MatDatepickerModule,MatNativeDateModule
     ,MatSnackBarModule,MatCardModule,MatToolbarModule,MatIconModule,
 
   ],
-  providers: [authInterceptorProviders ],
+  providers: [authInterceptorProviders,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

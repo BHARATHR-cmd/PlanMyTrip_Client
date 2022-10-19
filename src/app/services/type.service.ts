@@ -9,9 +9,11 @@ export class TypeService {
 
   constructor(private http:HttpClient) { }
 
-
+  public  getTypes(){
+    return this.http.get(`${baseUrl}/type/`)
+  }
 
   public addType(type:any){
-    this.http.post(`${baseUrl}/type/`,type)
+    return this.http.post(`${baseUrl}/type/`,type)
   }
 }

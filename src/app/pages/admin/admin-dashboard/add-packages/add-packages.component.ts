@@ -13,7 +13,7 @@ export class AddPackagesComponent implements OnInit {
 
   constructor(private opPackage:PackageService,private snackbar:MatSnackBar,private opCategory:CategoryService) { }
   package={
-    ptilte:"",pdescription:"", pimage:"",category:{ cid:1,
+    ptilte:"",pdescription:"", pimage:"",pprice:'',category:{ cid:1,
     
     }}
 
@@ -31,11 +31,22 @@ export class AddPackagesComponent implements OnInit {
     });
 
   }
+  toggleSubmitb=false;
+
+  toggleSubmit(){
+    this.toggleSubmitb=true
+
+  }
   packageFormSubmit(){
-    if(this.package.ptilte!=""||this.package.pdescription!=""||this.package.pimage!=""){
+    if(this.package.ptilte!=""||this.package.pdescription!=""||this.package.pimage!=""||this.package.pprice!=""){
      this.opPackage.addPackage(this.package).subscribe((data:any)=>{
       console.log(data);
-      Swal.fire('Success',"Category got Save as "+data.ptilte,"success")
+      Swal.fire('Success',"Category got Save as "+data.ptilte,"success");
+      this.package={
+        ptilte:"",pdescription:"", pimage:"",pprice:'',category:{ cid:0,
+        
+        }}
+        this.toggleSubmitb=false
      });
     }
     else{

@@ -12,7 +12,13 @@ export class ProfileComponent implements OnInit {
   show=true;
   updateurl=''
   
+pic='https://preview.redd.it/5v6c5iffgxh91.png?width=553&format=png&auto=webp&s=73dae80c3b90d87ff08a409dd88711c4e9f935f3';
+
   ngOnInit(): void {
+    if(this.login.getUser().profilepic!='default.jpeg'){
+      this.pic=this.login.getUser().profilepic;
+    }
+    
     if(this.login.getUserRole()=="ADMIN"){
       this.show=true;
       this.updateurl='/admin-dashboard/update-profile/'

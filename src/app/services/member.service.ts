@@ -12,6 +12,6 @@ export class MemberService {
 
 
   public addMember(member:any){
-    this.http.post(`${baseUrl}/member/`,member)
+    return this.http.post(`${baseUrl}/member/`,member)
   }
 }

@@ -12,7 +12,11 @@ export class OrderService {
 
 
   public addOrder(order:any){
-    this.http.post(`${baseUrl}/order/`,order)
+    return this.http.post(`${baseUrl}/order/`,order)
+  }
+
+  public getOrders(){
+    return this.http.get(`${baseUrl}/order/`)
   }
 
 }

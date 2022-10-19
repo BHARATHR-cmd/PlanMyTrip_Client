@@ -1,0 +1,13 @@
+<div *ngFor="let o of orders">
+    <mat-card *ngIf="o.oid!=0" class="bookedpad">
+        <div class="row">
+            <div class="col">Order id : {{o.oid}}
+                <div class="row"><button [routerLink]="detailsurl+o.packageid" mat-raised-button class="buttonbooked" color="accent">Packge Details</button>
+                </div>
+            </div>
+            <div class="col">Price : {{o.oprice}}</div>
+            <div class="col">Class : {{o.type.type}}</div>
+
+        </div>
+    </mat-card>
+</div>

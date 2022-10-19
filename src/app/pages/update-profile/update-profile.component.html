@@ -5,7 +5,7 @@
                 <mat-card>
 
 
-                    {{user|json}}
+
                     <form (ngSubmit)="formSubmit()">
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Name</mat-label>
@@ -20,12 +20,13 @@
                             <input [(ngModel)]="user.phone" name="phone" matInput placeholder="Enter here" required>
                         </mat-form-field>
                         <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Password</mat-label>
-                            <input [(ngModel)]="user.password" name="password" type="password" matInput placeholder="Enter here" required>
+                            <mat-label> Profile Image</mat-label>
+                            <input [(ngModel)]="user.profilepic" name="profilepic" matInput placeholder="Enter here" required>
                         </mat-form-field>
+
                         <div class="container" style="text-align: center;">
-                            <button mat-raised-button class="button_spacing" color="primary">Submit</button>
-                            <button mat-raised-button class="button_spacing" color="primary">Reset</button>
+                            <button mat-raised-button color="primary">Update</button>
+
 
 
                         </div>

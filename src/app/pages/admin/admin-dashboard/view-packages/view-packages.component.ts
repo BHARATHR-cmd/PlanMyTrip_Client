@@ -19,7 +19,7 @@ export class ViewPackagesComponent implements OnInit {
   }}
   ];
 
-  cid=0;
+  cid='0';
   showactions=false;
   detailsurl='/user-dashboard/package-details/'
 

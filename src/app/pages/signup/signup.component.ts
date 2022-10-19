@@ -39,7 +39,7 @@ loading = new Subject<boolean>()
           duration: 3000
         });
         
-      }
+      } 
       );
     
    

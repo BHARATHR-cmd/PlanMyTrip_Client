@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
   constructor(private login:LoginService,private router:Router) { }
 
   show=false;
-  show_view=true;
+  
   show_view_category_url='view-category';
   show_view_package_url='view-package/0';
 

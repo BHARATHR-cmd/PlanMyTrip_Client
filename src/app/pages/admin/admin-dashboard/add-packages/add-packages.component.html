@@ -19,19 +19,23 @@
                             <mat-label>Image Url</mat-label>
                             <input [(ngModel)]="package.pimage" name="pimage" type="text" matInput placeholder="Enter here" required>
                         </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Price</mat-label>
+                            <input [(ngModel)]="package.pprice" name="pprice" type="number" matInput placeholder="Enter here" required>
+                        </mat-form-field>
 
                         <mat-form-field appearance="fill">
                             <mat-label>Choose category</mat-label>
                             <mat-select name="category" [(ngModel)]="package.category.cid">
                                 <!-- <mat-option>Clear</mat-option> -->
-                                <mat-option *ngFor="let c of category" [value]="c.cid">{{c.ctitle}}</mat-option>
+                                <mat-option (click)="toggleSubmit()" *ngFor="let c of category" [value]="c.cid">{{c.ctitle}}</mat-option>
                             </mat-select>
 
 
 
                         </mat-form-field>
 
-                        <div class="container" style="text-align: center;">
+                        <div class="container" *ngIf="toggleSubmitb" style="text-align: center;">
                             <button mat-raised-button class="button_spacing" color="primary">Submit</button>
 
 
