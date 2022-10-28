@@ -5,7 +5,7 @@
                 <mat-card>
                     <div class="container text-center">
                         <img class="profile-image text-center" src="https://planyourtrip173347275.files.wordpress.com/2019/05/logo-1.png?w=599" alt="Logo">
-                        <!-- <img class="profile-image text-center" [src]="imagesrc" alt="Logo"> -->
+
 
                     </div>
 
@@ -14,23 +14,75 @@
                     <form (ngSubmit)="formSubmit()">
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Name</mat-label>
-                            <input [(ngModel)]="user.name" name="name" matInput placeholder="Enter here" required>
+                            <input [formControl]="username" type="text" [(ngModel)]="user.name" name="name" matInput placeholder="Enter here" required>
+
+
+
                         </mat-form-field>
+                        <div *ngIf="username.invalid">
+                            <mat-error *ngIf="username.hasError('pattern')">
+
+                                <mat-icon>warning</mat-icon> Name must contain only Alphabets
+
+                            </mat-error>
+                        </div>
+
+
+
+
+
+
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Email Id</mat-label>
-                            <input [(ngModel)]="user.emailId" name="emailId" type="email" matInput placeholder="Enter here" required>
+                            <input [formControl]="useremail" type="text" [(ngModel)]="user.emailId" name="emailId" type="email" matInput placeholder="Enter here" required>
+
                         </mat-form-field>
+                        <div *ngIf="useremail.invalid">
+                            <mat-error *ngIf="useremail.hasError('email')">
+
+                                <mat-icon>warning</mat-icon> Must be valid Email Id
+
+                            </mat-error>
+                        </div>
+
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Phone</mat-label>
-                            <input [(ngModel)]="user.phone" name="phone" matInput placeholder="Enter here" required>
+                            <input [formControl]="userphone" [(ngModel)]="user.phone" type="text" name="phone" matInput placeholder="Enter here" required>
+
                         </mat-form-field>
+
+                        <div *ngIf="userphone.invalid">
+                            <mat-error *ngIf="userphone.hasError('pattern')">
+
+                                <mat-icon>warning</mat-icon> Phone number must contain only numbers
+
+                            </mat-error>
+                            <mat-error *ngIf="userphone.hasError('minlength')">
+
+                                <mat-icon>warning</mat-icon> Phone number must contain atleast 10 digits
+
+                            </mat-error>
+                            <mat-error *ngIf="userphone.hasError('maxlength')">
+
+                                <mat-icon>warning</mat-icon> Phone number must contain atmost 10 digits
+
+                            </mat-error>
+                        </div>
+
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input [(ngModel)]="user.password" name="password" type="password" matInput placeholder="Enter here" required>
+                            <input [formControl]="userpassword" [(ngModel)]="user.password" name="password" type="password" matInput placeholder="Enter here" required>
+
                         </mat-form-field>
-                        <div class="container" style="text-align: center;">
-                            <button mat-raised-button class="button_spacing" color="primary">Submit</button>
-                            <button mat-raised-button class="button_spacing" color="primary">Reset</button>
+                        <div *ngIf="userpassword.invalid">
+                            <mat-error *ngIf="userpassword.hasError('minlength')">
+
+                                <mat-icon>warning</mat-icon> Password Must contain atleast 8 Characters
+
+                            </mat-error>
+                        </div>
+                        <div class="container" *ngIf="!username.invalid && !userphone.invalid&& !useremail.invalid && !userpassword.invalid" style="text-align: center;">
+                            <button mat-raised-button color="primary">Sign Up</button>
 
 
                         </div>

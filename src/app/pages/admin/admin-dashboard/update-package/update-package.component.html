@@ -26,8 +26,6 @@
                                 <!-- <mat-option>Clear</mat-option> -->
                                 <mat-option *ngFor="let c of category" [value]="c.cid">{{c.ctitle}}</mat-option>
                             </mat-select>
-                            <mat-hint>Errors appear instantly!</mat-hint>
-                            <mat-error>You must make a selection</mat-error>
 
                         </mat-form-field>
 
@@ -37,7 +35,7 @@
 
                         </div>
                     </form>
-                    {{package|json}}
+                    <!-- {{package|json}} -->
                 </mat-card>
             </div>
         </div>

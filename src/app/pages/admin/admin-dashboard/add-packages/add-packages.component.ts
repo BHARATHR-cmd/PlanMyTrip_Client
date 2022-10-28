@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryService } from 'src/app/services/category.service';
 import { PackageService } from 'src/app/services/package.service';
@@ -20,6 +21,24 @@ export class AddPackagesComponent implements OnInit {
   public category=[{ cid:'',
     cdescription:"", cimage:"", ctitle:""
   }];
+
+
+
+  // ************Formcontrol***********
+
+  ptilte = new FormControl('', [Validators.required]); 
+  pdescription = new FormControl('', [Validators.required]); 
+  cimage=new FormControl('', [Validators.required]); 
+  pimage = new FormControl('', [Validators.required]); 
+  pprice = new FormControl('', [Validators.required,Validators.pattern('[0-9]*')]); 
+  cid=new FormControl('', [Validators.required]); 
+
+
+
+
+
+  // -------------------------
+
 
   ngOnInit(): void {
     this.opCategory.getCategories().subscribe((data:any)=>{

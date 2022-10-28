@@ -14,11 +14,11 @@ export class ViewPackagesComponent implements OnInit {
   constructor(private login:LoginService,private route:ActivatedRoute,private opPackage:PackageService) { }
 
   Packages=[{pid:"",
-  ptilte:"",pdescription:"", pimage:"",category:{cid:'',
+  ptilte:"ddd",pdescription:"", pimage:"",category:{cid:'',
     cdescription:"", cimage:"", ctitle:""
   }}
   ];
-
+ 
   cid='0';
   showactions=false;
   detailsurl='/user-dashboard/package-details/'

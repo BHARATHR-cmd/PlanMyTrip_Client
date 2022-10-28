@@ -14,8 +14,9 @@ export class BookedPackagesComponent implements OnInit {
 
 orders=[{
   oid: 0,
-  startDateofVacation: '',
-  endDateofVacation: '',
+  startDateofVacation: new Date(),
+  endDateofVacation:new Date(),
+  orderDate_Time:new Date(),
   oprice: 0,
   type: {
       tid: 0,
@@ -34,20 +35,32 @@ orders=[{
 }]
 
 detailsurl='/user-dashboard/package-details/';
-
+panelOpenState = false;
   ngOnInit(): void {
+    this.panelOpenState = false;
     if(this.login.getUserRole()=="ADMIN"){
       this.detailsurl='/admin-dashboard/package-details/'
-
-  }
       this.opOrder.getOrders().subscribe((data:any)=>{
-        data.forEach((order:any)=>{
-          if(order.user.userid==this.login.getUser().userid){
-            this.orders.push(order);
-          }
-        })
+        this.orders= data;
+        
 
       })
+
+  }else{
+
+    this.detailsurl='/user-dashboard/package-details/'
+    this.opOrder.getOrders().subscribe((data:any)=>{
+      data.forEach((order:any)=>{
+        if(order.user.userid==this.login.getUser().userid){
+          this.orders.push(order);
+        }
+      })
+
+    })
+
+
+  }
+      
   }
 
 }

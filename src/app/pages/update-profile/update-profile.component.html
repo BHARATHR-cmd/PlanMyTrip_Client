@@ -23,6 +23,9 @@
                             <mat-label> Profile Image</mat-label>
                             <input [(ngModel)]="user.profilepic" name="profilepic" matInput placeholder="Enter here" required>
                         </mat-form-field>
+                        <mat-file-upload [labelText]="'Select file(s)'" [selectButtonText]="'Select file(s)'" [uploadButtonText]="'Upload File(s)'" [allowMultipleFiles]="false" [showUploadButton]="true" [customSvgIcon]="" [acceptedTypes]="'*.*'">
+                        </mat-file-upload>
+
 
                         <div class="container" style="text-align: center;">
                             <button mat-raised-button color="primary">Update</button>

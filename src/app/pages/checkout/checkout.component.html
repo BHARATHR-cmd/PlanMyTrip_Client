@@ -59,74 +59,123 @@
                                     <mat-card>
                                         <mat-form-field class="full-width" appearance="fill">
                                             <mat-label>Member Name</mat-label>
-                                            <input [(ngModel)]="member.mname" name="mname" matInput placeholder="Enter here" required>
+                                            <input [formControl]="membername" [(ngModel)]="member.mname" name="mname" matInput placeholder="Enter here">
                                         </mat-form-field>
                                         <mat-form-field class="full-width" appearance="fill">
                                             <mat-label>Age</mat-label>
-                                            <input [(ngModel)]="member.mage" min="8" name="mage" type="number" matInput placeholder="Enter here" required>
+                                            <input [formControl]="memberage" [(ngModel)]="member.mage" name="mage" matInput placeholder="Enter here">
+                                            <mat-hint *ngIf="memberage.touched">Age must be more than 6 and less than 70 <br></mat-hint>
                                         </mat-form-field>
-                                        <mat-form-field class="full-width" appearance="fill">
-                                            <mat-label>Gender</mat-label>
-                                            <input [(ngModel)]="member.mgender" name="mgender" type="text" matInput placeholder="Enter here" required>
-                                        </mat-form-field>
-                                        <button mat-icon-button type="submit" *ngIf="member.mname!=''||member.mage!=''||member.mgender!=''" class="text-center col" color="accent"><mat-icon>person_add</mat-icon></button>
+                                        <div *ngIf="memberage.touched && memberage.invalid">
+                                            <mat-error *ngIf="memberage.hasError('pattern')">
+                                                Must be Number
+                                            </mat-error>
+                                        </div> <br>
+
+
+
+                                        <mat-radio-group [formControl]="membergender" [(ngModel)]="member.mgender" name="mgender" aria-label="Select an option">
+                                            <mat-label>Gender : </mat-label>
+                                            <mat-radio-button value="Male">Male</mat-radio-button>
+                                            <mat-radio-button value="Female">Female</mat-radio-button>
+                                        </mat-radio-group>
+
+
+
+                                        <button mat-icon-button type="submit" *ngIf="!membername.invalid&&!memberage.invalid&&!membergender.invalid" class="text-center col" color="accent"><mat-icon>person_add</mat-icon></button>
                                     </mat-card>
                                 </form>
-                                <div class="pad">
-                                    <mat-card>
-                                        <h3 class="text-center">Member Details</h3>
-                                        <div class="row " *ngFor="let m of Members" style="padding-left: 20px;padding-bottom: 10px;padding-top: 10px;">
-                                            <mat-card class="col-md-5 pad membercard" *ngIf="m.mname!=''">
-                                                <div class="col membercard">Name:{{m.mname}}</div>
-                                                <div class="col membercard">Age:{{m.mage}}</div>
-                                                <div class="col membercard">Gender:{{m.mgender}}</div>
+                                <div *ngIf="Members.length>1 else EmptyMembers">
+                                    <!-- <div *ngIf="true"> -->
+                                    <div class="pad">
+                                        <mat-card>
+                                            <h3 class="text-center">Member Details</h3>
+                                            <div class="row " *ngFor="let m of Members" style="padding-left: 20px;padding-bottom: 10px;padding-top: 10px;">
+                                                <mat-card class="col-md-5 pad membercard" *ngIf="m.mname!=''">
+                                                    <div class="col membercard">Name:{{m.mname}}</div>
+                                                    <div class="col membercard">Age:{{m.mage}}</div>
+                                                    <div class="col membercard">Gender:{{m.mgender}}</div>
 
-                                                <button mat-icon-button (click)="removeMember(m.mname)" class="text-center col" color="accent"><mat-icon>delete</mat-icon></button>
-
-
-                                            </mat-card>
-                                        </div>
-
-                                    </mat-card>
-                                </div>
-                                <form (ngSubmit)="checkOutFormSubmit()">
+                                                    <button mat-icon-button (click)="removeMember(m.mname)" class="text-center col" color="accent"><mat-icon>delete</mat-icon></button>
 
 
-                                    <mat-form-field class="pad" appearance="fill">
-                                        <mat-label>Choose Type of Package</mat-label>
-                                        <mat-select name="type" [(ngModel)]="order.type.tid">
-                                            <mat-option (click)="typePriceChange(t.tprice)" *ngFor="let t of types" [value]="t.tid">{{t.type}} - ₹{{t.tprice}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Enter a Vacation date range</mat-label>
-                                        <mat-date-range-input [rangePicker]="picker">
-                                            <input matStartDate (dateInput)="setDate()" [(ngModel)]="start_dateof_vacation" name="start_dateof_vacation" placeholder="Start date">
-                                            <input matEndDate (dateInput)="setDate()" [(ngModel)]="end_dateof_vacation" name="end_dateof_vacation" placeholder="End date">
-                                        </mat-date-range-input>
-                                        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                        <mat-date-range-picker #picker></mat-date-range-picker>
+                                                </mat-card>
+                                            </div>
 
-
-                                    </mat-form-field>
-
-                                    <mat-card class="text-center" *ngIf="totalprice!=0" style="max-width: max-content;min-width:fit-content;margin-left:50%;">
-                                        Total Price : ₹{{totalprice}}
-                                    </mat-card>
-
-
-
-
-
-
-
-                                    <div class="container pad" style="text-align: center;">
-                                        <button mat-raised-button class="button_spacing" color="primary">Submit</button>
-
-
+                                        </mat-card>
                                     </div>
-                                </form>
+
+                                    <form (ngSubmit)="checkOutFormSubmit()">
+
+
+                                        <mat-form-field class="pad" appearance="fill">
+                                            <mat-label>Choose Type of Package</mat-label>
+                                            <mat-select [formControl]="type_select" name="type" [(ngModel)]="order.type.tid">
+                                                <mat-option selected>Choose Variant</mat-option>
+
+                                                <mat-option (click)="typePriceChange(t.tprice)" *ngFor="let t of types" [value]="t.tid">{{t.type}} - ₹{{t.tprice}}</mat-option>
+                                            </mat-select>
+
+                                        </mat-form-field>
+                                        <div *ngIf="type_select.valid">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Enter a Vacation date range</mat-label>
+                                                <mat-date-range-input [min]="minDate" [max]="maxDate" [rangePicker]="picker">
+                                                    <input matStartDate (dateInput)="setDate()" [formControl]="start_date" [(ngModel)]="start_dateof_vacation" name="start_dateof_vacation" placeholder="Start date" required>
+                                                    <input matEndDate (dateInput)="setDate()" [formControl]="end_date" [(ngModel)]="end_dateof_vacation" name="end_dateof_vacation" placeholder="End date" required>
+                                                </mat-date-range-input>
+                                                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                                                <div *ngIf="start_date.touched || end_date.touched">
+                                                    <mat-error *ngIf="start_date.invalid || end_date.invalid">Select Dates</mat-error>
+
+                                                </div>
+                                            </mat-form-field>
+                                            <div *ngIf="start_date.valid && end_date.valid">
+                                                <br>
+                                                <form [formGroup]="discountForm" [hidden]="discountform_toggle" (ngSubmit)="discountform()">
+                                                    <mat-form-field class="full-width" appearance="fill">
+                                                        <mat-label>Discount Code</mat-label>
+                                                        <div class="row">
+                                                            <input formControlName="discountcode" class="col-9" [(ngModel)]="code" name="code" type="text" matInput placeholder="Enter your discount code">
+                                                            <div *ngIf="discountForm.controls['discountcode'].dirty && discountForm.controls['discountcode'].enabled">
+                                                                <button class="col" mat-button color="primary">Apply</button>
+                                                            </div>
+                                                            <div *ngIf="discountForm.controls['discountcode'].dirty ||!discountForm.controls['discountcode'].enabled && discountForm.controls['discountcode'].value!=''">
+                                                                <button (click)="reset()" class="col" mat-button color="primary"><mat-icon>cancel</mat-icon></button>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </mat-form-field>
+                                                </form><br>
+                                                <mat-card style="max-width: max-content;min-width:max-content;margin-left:10rem;">
+                                                    Package Price : ₹{{packagee.pprice}}
+                                                    <div *ngIf="dicountPrice<packagee.pprice"><br>Disounted Package Price:₹{{dicountPrice}}<br></div>
+                                                    <div *ngIf="memberAddPrice>0"><br>Member Price:₹{{memberAddPrice}}<br></div>
+                                                    <div *ngIf="packageVariantPrice>0"><br>Package Variant Price:₹{{packageVariantPrice}}<br></div>
+
+                                                    <div *ngIf="priceAccDates>0"><br>Price for stay: {{number_of_days}} X ₹{{minPerdayPrice}} =₹{{priceAccDates}}<br></div>
+
+                                                    <div *ngIf="totalprice>0"><br>Total Price:₹{{totalprice}}<br></div>
+                                                </mat-card><br>
+                                                <div class="container pad" style="text-align: center;">
+                                                    <button mat-raised-button class="button_spacing" color="primary">Submit</button>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <ng-template #EmptyMembers>
+                                    <div class="container text-center">
+                                        <h4>Please Add Member Details</h4>
+                                    </div>
+                                </ng-template>
                                 <!-- {{package|json}} -->
                                 <div *ngIf="loading| async">
                                     <h6 class="">Please wait while we Create your Order</h6>

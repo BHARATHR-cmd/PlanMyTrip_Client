@@ -78,13 +78,12 @@
         min-height: 300px;
     }
      */
-    
-    .card_image {
-        max-width: 300px;
+    /* .card_image {
+        max-width: 290px;
         max-height: 190px;
-        /* min-width: 300px; */
-        /* min-height: 300px; */
-    }
+        min-width: 290px;
+        min-height: 190px;
+    } */
     
     .detailsimagecard {
         max-width: 260px;

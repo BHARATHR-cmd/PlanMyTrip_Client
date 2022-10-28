@@ -9,23 +9,41 @@
                     <form (ngSubmit)="formSubmit()">
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Title</mat-label>
-                            <input [(ngModel)]="category.ctitle" name="ctitle" matInput placeholder="Enter here" required>
+                            <input [(ngModel)]="category.ctitle" [formControl]="ctitle" name="ctitle" matInput placeholder="Enter here" required>
                         </mat-form-field>
+                        <div *ngIf="ctitle.invalid && ctitle.touched">
+                            <mat-error *ngIf="ctitle.hasError('required')">
+
+                                <mat-icon>warning</mat-icon> Required
+
+                            </mat-error>
+                        </div>
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Description</mat-label>
-                            <input [(ngModel)]="category.cdescription" name="cdescription" type="text" matInput placeholder="Enter here" required>
+                            <input [(ngModel)]="category.cdescription" [formControl]="cdescription" name="cdescription" type="text" matInput placeholder="Enter here" required>
                         </mat-form-field>
+                        <div *ngIf="cdescription.invalid && cdescription.touched">
+                            <mat-error *ngIf="cdescription.hasError('required')">
+
+                                <mat-icon>warning</mat-icon>Required
+
+                            </mat-error>
+                        </div>
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Image Url</mat-label>
-                            <input [(ngModel)]="category.cimage" name="cimage" type="text" matInput placeholder="Enter here" required>
+                            <input [(ngModel)]="category.cimage" [formControl]="cimage" name="cimage" type="text" matInput placeholder="Enter here" required>
                         </mat-form-field>
 
-                        <!-- <img src="url" alt="">
+                        <div *ngIf="cimage.invalid">
+                            <mat-error *ngIf="cimage.hasError('required')&& cimage.touched">
 
-                        <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".png,.jpg"> -->
+                                <mat-icon>warning</mat-icon>Required
 
-                        <div class="container" style="text-align: center;">
-                            <button mat-raised-button class="button_spacing" color="primary">Submit</button>
+                            </mat-error>
+                        </div>
+
+                        <div class="container" *ngIf="!cimage.invalid && !cdescription.invalid&& !ctitle.invalid" style="text-align: center;">
+                            <button mat-raised-button color="primary">Submit</button>
 
 
                         </div>

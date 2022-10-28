@@ -1,13 +1,40 @@
+<div class="text-center" *ngIf="orders.length<0">
+    <h4>You haven't Booked packages</h4>
+</div>
 <div *ngFor="let o of orders">
-    <mat-card *ngIf="o.oid!=0" class="bookedpad">
-        <div class="row">
-            <div class="col">Order id : {{o.oid}}
-                <div class="row"><button [routerLink]="detailsurl+o.packageid" mat-raised-button class="buttonbooked" color="accent">Packge Details</button>
-                </div>
-            </div>
-            <div class="col">Price : {{o.oprice}}</div>
-            <div class="col">Class : {{o.type.type}}</div>
 
-        </div>
-    </mat-card>
+    <mat-accordion>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div class="row">
+                        <div class="col">Order id : {{o.oid}}</div>
+
+                    </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <div class="col">Price : Rs.{{o.oprice}}</div>
+                    <div class="col">User name : {{o.user.username}}</div>
+
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="row text-center">
+                <div class="col">
+                    <div class="row">Order time : {{o.orderDate_Time|date:'medium'}}</div>
+
+                    <div class="row"><button [routerLink]="detailsurl+o.packageid" mat-raised-button class="buttonbooked" color="accent">Packge Details</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">Start Date : {{o.startDateofVacation| date}}</div>
+                    <div class="row">End Date : {{o.endDateofVacation| date}}</div>
+                </div>
+                <div class="col">Class : {{o.type.type}}</div>
+                <div class="col"></div>
+
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>

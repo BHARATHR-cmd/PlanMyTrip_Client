@@ -12,7 +12,6 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
-import {FormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomeComponent } from './Components/home/home.component';
 import {MatCardModule} from '@angular/material/card';
@@ -41,7 +40,10 @@ import { PackageDetailComponent } from './pages/package-detail/package-detail.co
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { DatePipe } from '@angular/common';
 import { BookedPackagesComponent } from './pages/booked-packages/booked-packages.component';
-
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { MatFileUploadModule } from 'mat-file-upload';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,7 @@ import { BookedPackagesComponent } from './pages/booked-packages/booked-packages
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule,MatTableModule,MatSelectModule,
+    FormsModule,MatTableModule,MatSelectModule,ReactiveFormsModule,MatRadioModule,MatExpansionModule,MatFileUploadModule,
     HttpClientModule,MatListModule,MatProgressBarModule,MatTooltipModule,MatDatepickerModule,MatNativeDateModule
     ,MatSnackBarModule,MatCardModule,MatToolbarModule,MatIconModule,
 

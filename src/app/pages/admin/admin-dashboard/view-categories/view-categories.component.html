@@ -1,41 +1,41 @@
 <div class="bootstrap-wrapper">
     <div class="container">
-        <div class="row">
-            <div class="col-md-5 pad" *ngFor="let c of Categories">
-                <mat-card class="example-carrd">
-                    <mat-card-header>
 
-                        <mat-card-title>{{c.ctitle}}</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image class="card_image" src="{{c.cimage}}" alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                        <p>
-                            {{c.cdescription}} </p>
-                    </mat-card-content>
-                    <mat-card-actions class="row">
-                        <div class="col align-self-end">
-                            <div class="example-button-row">
-                                <div class="example-flex-container">
-                                    <div class="example-button-container">
-                                        <button *ngIf="showactions" [routerLink]="'/admin-dashboard/update-category/'+c.cid" mat-icon-button matTooltip="Update" color="accent">
+
+        <div class="col-md-5 pad" *ngFor="let c of Categories">
+            <mat-card *ngIf="c.ctitle!=''" class="example-carrd">
+                <mat-card-header>
+
+                    <mat-card-title>{{c.ctitle}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image class="card_image" src="{{c.cimage}}" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <p>
+                        {{ (c.cdescription.length>120)? (c.cdescription | slice:0:120)+'..':(c.cdescription) }} </p>
+                </mat-card-content>
+                <mat-card-actions class="row">
+                    <div class="col align-self-end">
+                        <div class="example-button-row">
+                            <div class="example-flex-container">
+                                <div class="example-button-container">
+                                    <button *ngIf="showactions" [routerLink]="'/admin-dashboard/update-category/'+c.cid" mat-icon-button matTooltip="Update" color="accent">
                         <mat-icon>update</mat-icon>
                       </button><button [routerLink]="roleurl+'/view-package/'+c.cid" mat-icon-button matTooltip="View Packages" color="accent">
                         <mat-icon>read_more</mat-icon>
                       </button>
-                                        <button *ngIf="showactions" (click)="delete(c.cid)" mat-icon-button color="warn" matTooltip="Delete">
+                                    <button *ngIf="showactions" (click)="delete(c.cid)" mat-icon-button color="warn" matTooltip="Delete">
                         <mat-icon>delete</mat-icon>
                       </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </mat-card-actions>
-                </mat-card>
-
-            </div>
-
-
+                    </div>
+                </mat-card-actions>
+            </mat-card>
 
         </div>
+
+
+
     </div>
 </div>

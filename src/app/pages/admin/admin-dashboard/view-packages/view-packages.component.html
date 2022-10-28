@@ -1,11 +1,11 @@
 <div class="bootstrap-wrapper">
     <div class="container">
-        <div class="row">
+        <div *ngIf="Packages.length>0" class="row">
             <div class="col-md-5 pad" *ngFor="let p of Packages">
                 <mat-card class="example-card incard">
                     <mat-card-header>
 
-                        <mat-card-title>{{p.ptilte}} of Category {{p.category.ctitle}}</mat-card-title>
+                        <mat-card-title>{{p.ptilte}}</mat-card-title>
                     </mat-card-header>
 
                     <img mat-card-image class="card_image" src="{{p.pimage}}" alt="Photo of a Shiba Inu">

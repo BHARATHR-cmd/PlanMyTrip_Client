@@ -15,7 +15,7 @@ pid=0;
 checkouturl='/user-dashboard/package-order/';
 
 packagee={pid:"",
-ptilte:"",pdescription:"", pimage:"",category:{cid:'',
+ptilte:"",pdescription:"",pprice:"", pimage:"",category:{cid:'',
   cdescription:"", cimage:"", ctitle:""
 }}
   ngOnInit(): void {

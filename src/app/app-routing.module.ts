@@ -23,7 +23,7 @@ import { BookedPackagesComponent } from './pages/booked-packages/booked-packages
 const routes: Routes = [
   {
     path:"",
-    component:HomeComponent,
+    component:SignupComponent,
     pathMatch:'full'
   },
   {

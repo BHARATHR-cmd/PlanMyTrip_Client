@@ -11,16 +11,29 @@
                     <h1 class="text-center">Login Here!!!!</h1>
                     <form (ngSubmit)="loginFormSubmit()">
                         <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Email Id</mat-label>
-                            <input name="username" [(ngModel)]="LoginData.username" type="text" matInput placeholder="Enter here" required>
+                            <mat-label>Username</mat-label>
+                            <input name="username" [formControl]="username" [(ngModel)]="LoginData.username" type="text" matInput placeholder="Enter here" required>
                         </mat-form-field>
+                        <div *ngIf="username.invalid">
+                            <mat-error *ngIf="username.hasError('email')">
+
+                                <mat-icon>warning</mat-icon> Must be valid Username
+
+                            </mat-error>
+                        </div>
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input [(ngModel)]="LoginData.password" name="password" type="password" matInput placeholder="Enter here" required>
+                            <input [formControl]="userpassword" [(ngModel)]="LoginData.password" name="password" type="password" matInput placeholder="Enter here" required>
                         </mat-form-field>
-                        <div class="container" style="text-align: center;">
+                        <div *ngIf="userpassword.invalid">
+                            <mat-error *ngIf="userpassword.hasError('minlength')">
+
+                                <mat-icon>warning</mat-icon> Password Must contain atleast 8 Characters
+
+                            </mat-error>
+                        </div>
+                        <div class="container" *ngIf="!username.invalid && !userpassword.invalid" style="text-align: center;">
                             <button mat-raised-button class="button_spacing" color="primary">Submit</button>
-                            <button mat-raised-button class="button_spacing" color="accent">Reset</button>
 
 
                         </div>

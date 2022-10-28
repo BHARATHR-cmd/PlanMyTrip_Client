@@ -9,34 +9,75 @@
                     <form (ngSubmit)="packageFormSubmit()">
                         <mat-form-field class="full-width" appearance="fill">
                             <mat-label>Title</mat-label>
-                            <input [(ngModel)]="package.ptilte" name="ptilte" matInput placeholder="Enter here" required>
+                            <input [formControl]="ptilte" [(ngModel)]="package.ptilte" name="ptilte" matInput placeholder="Enter here" required>
                         </mat-form-field>
+                        <div *ngIf="ptilte.invalid&& ptilte.touched">
+                            <mat-error *ngIf="ptilte.hasError('required')">
+
+                                <mat-icon>warning</mat-icon>Required
+
+                            </mat-error>
+                        </div>
                         <mat-form-field class="full-width" appearance="fill">
                             <mat-label>Description</mat-label>
-                            <input [(ngModel)]="package.pdescription" name="pdescription" type="text" matInput placeholder="Enter here" required>
+                            <input [formControl]="pdescription" [(ngModel)]="package.pdescription" name="pdescription" type="text" matInput placeholder="Enter here" required>
                         </mat-form-field>
+                        <div *ngIf="pdescription.invalid&& pdescription.touched">
+                            <mat-error *ngIf="pdescription.hasError('required')">
+
+                                <mat-icon>warning</mat-icon>Required
+
+                            </mat-error>
+                        </div>
                         <mat-form-field class="full-width" appearance="fill">
                             <mat-label>Image Url</mat-label>
-                            <input [(ngModel)]="package.pimage" name="pimage" type="text" matInput placeholder="Enter here" required>
+                            <input [formControl]="pimage" [(ngModel)]="package.pimage" name="pimage" type="text" matInput placeholder="Enter here" required>
                         </mat-form-field>
+                        <div *ngIf="pimage.invalid&& pimage.touched">
+                            <mat-error *ngIf="pimage.hasError('required')">
+
+                                <mat-icon>warning</mat-icon>Required
+
+                            </mat-error>
+                        </div>
                         <mat-form-field class="full-width" appearance="fill">
                             <mat-label>Price</mat-label>
-                            <input [(ngModel)]="package.pprice" name="pprice" type="number" matInput placeholder="Enter here" required>
+                            <input [formControl]="pprice" [(ngModel)]="package.pprice" name="pprice" type="text" matInput placeholder="Enter here" required>
                         </mat-form-field>
+                        <div *ngIf="pprice.invalid&& pprice.touched">
+                            <mat-error *ngIf="pprice.hasError('required')">
+
+                                <mat-icon>warning</mat-icon>Required
+
+                            </mat-error>
+                            <mat-error *ngIf="pprice.hasError('pattern')">
+
+                                <mat-icon>warning</mat-icon>Price must only numbers
+
+                            </mat-error>
+                        </div>
 
                         <mat-form-field appearance="fill">
                             <mat-label>Choose category</mat-label>
                             <mat-select name="category" [(ngModel)]="package.category.cid">
                                 <!-- <mat-option>Clear</mat-option> -->
-                                <mat-option (click)="toggleSubmit()" *ngFor="let c of category" [value]="c.cid">{{c.ctitle}}</mat-option>
+                                <mat-option (click)="toggleSubmit()" [formControl]="cid" *ngFor="let c of category" [value]="c.cid">{{c.ctitle}}</mat-option>
                             </mat-select>
 
 
 
                         </mat-form-field>
+                        <div *ngIf="cid.invalid&& cid.touched">
+                            <mat-error *ngIf="pprice.hasError('required')">
 
-                        <div class="container" *ngIf="toggleSubmitb" style="text-align: center;">
-                            <button mat-raised-button class="button_spacing" color="primary">Submit</button>
+                                <mat-icon>warning</mat-icon>Required
+
+                            </mat-error>
+
+                        </div>
+
+                        <div class="container" *ngIf="toggleSubmitb && !pprice.invalid&& !pimage.invalid && !pdescription.invalid && !ptilte.invalid" style="text-align: center;">
+                            <button mat-raised-button class="button_spacing" color="primary">Add</button>
 
 
                         </div>

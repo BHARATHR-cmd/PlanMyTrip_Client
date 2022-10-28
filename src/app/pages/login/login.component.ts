@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
@@ -15,6 +16,18 @@ export class LoginComponent implements OnInit {
     password:""
 
   }
+
+
+
+  // ************Formcontrol***********
+
+  username = new FormControl('', [Validators.email]); 
+  userpassword = new FormControl('', [Validators.minLength(8)]); 
+
+
+
+
+  // -------------------------
   constructor(private Login:LoginService,private router:Router,private snack :MatSnackBar) { }
   loginFormSubmit(){
     this.Login.generateToken(this.LoginData).subscribe((data:any)=>{
@@ -46,8 +59,11 @@ export class LoginComponent implements OnInit {
     },
     (error)=>{
       console.log("Error !!");
-      console.log(error);
-      this.snack.open("Invalid Details !! Try Again","",{duration:3000} )
+      console.log(error.error.message);
+      if(error.error.message=='Invalid Credentials'){
+        this.snack.open("Invalid Credentials !! Try Again","",{duration:3000} )
+      }
+      
     }
     );
     

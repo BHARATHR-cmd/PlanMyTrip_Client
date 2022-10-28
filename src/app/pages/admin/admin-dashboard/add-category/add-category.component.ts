@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import Swal from 'sweetalert2';
@@ -11,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class AddCategoryComponent implements OnInit {
 
-  constructor(private categoryService:CategoryService,private snackbar:MatSnackBar) { }
+  constructor(private router:Router,private categoryService:CategoryService,private snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -23,22 +25,19 @@ export class AddCategoryComponent implements OnInit {
     cimage:"",
     
   }
-  // fileChange(event:any){
-  //   console.log(event)
-  //   const file = event.target.files[0];
-  //   const reader = new FileReader();
+  
+ 
+  // ************Formcontrol***********
 
-  //   reader.addEventListener("load", () => {
-  //   // convert image file to base64 string
-  //   this.url = reader.result;
-  //   console.log(this.url.substring(22,this.url.length))
-  //   this.category.cimage=this.url.substring(22,this.url.length);
-  // }, false);
+  ctitle = new FormControl('', [Validators.required]); 
+  cdescription = new FormControl('', [Validators.required]); 
+  cimage=new FormControl('', [Validators.required]); 
 
-  // if (file) {
-  //   reader.readAsDataURL(file);
-  // }
-  // }
+
+
+
+
+  // -------------------------
 
   formSubmit(){
     if(this.category.ctitle!=""||this.category.cdescription!=""){
@@ -46,14 +45,22 @@ export class AddCategoryComponent implements OnInit {
       
         console.log(data);
         Swal.fire('Success',"Category got Save as "+data.ctitle)
+        
+        // this.category={
+        //   ctitle:"",
+        //   cdescription:"",
+        //   cimage:"",}
+        
   
-      });
+      });this.router.navigate(['/admin-dashboard/view-category']);
     }
     else{
       console.log("Error !!");
       // console.log(error);
       this.snackbar.open("Invalid Details !! Try Again","",{duration:3000} )
     }
+
+    
   
   }
 

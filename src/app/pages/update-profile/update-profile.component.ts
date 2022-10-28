@@ -25,6 +25,8 @@ export class UpdateProfileComponent implements OnInit {
     
   }
 
+ppic='';
+
   formSubmit(){
     console.log(this.user);
     this.opUser.updateUserProfile(this.user).subscribe((data:any)=>{
