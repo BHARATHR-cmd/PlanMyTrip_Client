@@ -43,8 +43,7 @@ import { BookedPackagesComponent } from './pages/booked-packages/booked-packages
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { MatFileUploadModule } from 'mat-file-upload';
-
+import { FileUploadModule } from 'ng2-file-upload';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,8 +75,8 @@ import { MatFileUploadModule } from 'mat-file-upload';
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
-    MatFormFieldModule,
-    FormsModule,MatTableModule,MatSelectModule,ReactiveFormsModule,MatRadioModule,MatExpansionModule,MatFileUploadModule,
+    MatFormFieldModule,FileUploadModule,
+    FormsModule,MatTableModule,MatSelectModule,ReactiveFormsModule,MatRadioModule,MatExpansionModule,
     HttpClientModule,MatListModule,MatProgressBarModule,MatTooltipModule,MatDatepickerModule,MatNativeDateModule
     ,MatSnackBarModule,MatCardModule,MatToolbarModule,MatIconModule,
 
